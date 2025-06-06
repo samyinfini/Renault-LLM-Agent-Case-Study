@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Présentation Agent LLM Renault</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f0f2f5; color: #333; line-height: 1.6; }
+        .slide { 
+            background-color: white; 
+            border: 1px solid #ccc; 
+            padding: 25px 40px; 
+            margin: 30px auto; 
+            min-height: 550px; /* Hauteur A4 Paysage approx. à 96dpi */
+            width: 790px;  /* Largeur A4 Paysage approx. à 96dpi */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            /* justify-content: center; Si vous voulez centrer verticalement tout le contenu */
+        }
+        .slide-content { width: 100%; }
+        .slide h1 { color: #003366; /* Bleu Renault foncé */ text-align: center; margin-bottom: 30px; font-size: 2.2em; }
+        .slide h2 { color: #0055a4; /* Bleu Renault moyen */ border-bottom: 3px solid #ffcc00; /* Jaune Renault */ padding-bottom: 8px; margin-top:25px; margin-bottom:20px; font-size: 1.8em;}
+        .slide h3 { color: #1a60a9; margin-top:20px; margin-bottom:10px; font-size: 1.3em;}
+        .slide ul, .slide ol { margin-left: 0; padding-left: 20px; } /* Ajustement pour listes */
+        .slide li { margin-bottom: 10px; }
+        .slide p { margin-bottom:15px; text-align: justify;}
+        .placeholder-image { 
+            border: 2px dashed #d1d1d1; 
+            padding: 20px; 
+            text-align: center; 
+            color: #666; 
+            margin: 25px auto; 
+            font-style: italic;
+            width: 85%; 
+            min-height: 180px; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f9f9fa;
+            border-radius: 5px;
+        }
+        .footer { text-align: right; font-size: 0.9em; color: #555; padding: 20px 40px; border-top: 1px solid #eee; }
+        .col-container { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; margin-top:15px;}
+        .col { flex: 1; padding: 10px; box-sizing: border-box; min-width: 230px; }
+        .col-2 { flex-basis: calc(50% - 10px); padding:10px; box-sizing: border-box; min-width: 250px;}
+        .centered-text { text-align: center; }
+        .emphasize { color: #0055a4; font-weight: bold;}
+
+        /* Style pour le schéma HTML natif */
+        .native-schema-container {
+            border: 1px solid #ddd;
+            background-color: #fdfdfd;
+            padding: 20px;
+            margin: 20px auto;
+            width: 90%;
+            border-radius: 8px;
+        }
+        .schema-row { display: flex; justify-content: center; align-items: center; margin-bottom: 15px; flex-wrap: wrap;}
+        .schema-box {
+            border: 2px solid #0055a4; /* Bleu Renault */
+            background-color: #e7f3ff; /* Bleu clair */
+            color: #003366;
+            padding: 12px 18px;
+            margin: 8px;
+            border-radius: 6px;
+            text-align: center;
+            min-width: 180px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+            font-size: 0.9em;
+        }
+        .schema-box.main-agent { background-color: #d6eaf8; border-color: #003366; font-weight: bold; }
+        .schema-box.io { background-color: #fff9e6; border-color: #ffcc00; } /* Jaune clair */
+        .schema-arrow {
+            font-size: 2.5em; /* Taille de la flèche */
+            color: #0055a4; /* Couleur de la flèche */
+            margin: 0 15px;
+            line-height: 0.5; /* Ajuster pour alignement vertical */
+        }
+        .tools-group {
+            border: 1px dashed #0055a4;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 6px;
+            text-align:center;
+        }
+        .tools-group .schema-box { background-color: #e0f0e3; border-color: #5cb85c; font-size:0.85em; min-width:160px;} /* Vert clair pour outils */
+    </style>
+</head>
+<body>
+
+    <div class="slide">
+        <div class="slide-content">
+            <h1 style="font-size: 2.4em;">Agent LLM Renault :<br>Un Prototype pour l'Analyse Stratégique Augmentée par IA</h1>
+            <p class="centered-text" style="font-size: 1.3em;">Présenté par : <strong>[Votre Nom Complet]</strong> (Renault Digital)</p>
+            <p class="centered-text" style="font-size: 1.1em;">Contexte : Cas Pratique - Recrutement Data Scientist Gen AI Senior</p>
+            <p class="centered-text">Date : [Date de la présentation]</p>
+            
+            <div class="placeholder-image" style="border:none; background-color:white; min-height:150px;">
+                <img src="[CHEMIN_VERS_VOTRE_IMAGE_TITRE.PNG]" alt="Illustration Thème IA et Renault" style="max-width:250px; max-height:180px; display:block; margin: 20px auto;">
+                </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="slide-content">
+            <h2>Contexte et Opportunité pour Renault SA</h2>
+            <h3>Le Défi Métier : Naviguer dans la Complexité des Données</h3>
+            <p>Les équipes de Renault SA sont confrontées à un volume exponentiel d'informations stratégiques, financières et de marché (plan Renaulution, rapports annuels, données DPEF, actualités sectorielles). Extraire rapidement des insights pertinents pour la prise de décision est un enjeu majeur face à la complexité et à la vélocité des transformations du secteur automobile.</p>
+            
+            <h3>Notre Proposition (Renault Digital) : L'IA Générative comme Levier de Performance</h3>
+            <p>Renault Digital a prototypé un <span class="emphasize">Agent d'Analyse Augmentée</span>. L'objectif : un assistant intelligent, spécialisé sur les données Renault, capable d'automatiser et d'accélérer l'extraction, la synthèse et l'analyse d'informations clés.</p>
+            
+            <h3>Valeur Ajoutée pour Renault SA</h3>
+            <ul>
+                <li><strong>Efficacité Opérationnelle :</strong> Réduction significative du temps consacré à la recherche et à la compilation manuelles d'informations.</li>
+                <li><strong>Accessibilité de l'Information :</strong> Interrogation intuitive des corpus documentaires en langage naturel.</li>
+                <li><strong>Prise de Décision Éclairée :</strong> Fourniture rapide de synthèses ciblées et d'analyses descriptives.</li>
+                <li><strong>Valorisation du Patrimoine Informationnel :</strong> Meilleure exploitation des documents et données existants au sein du Groupe.</li>
+            </ul>
+            <p><em>Ce prototype (Version 1) vise à illustrer concrètement le potentiel de cette approche.</em></p>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="slide-content">
+            <h2>La Solution : Agent d'Analyse Augmentée - Prototype V1</h2>
+            <h3>Architecture Fonctionnelle (Vue Macro)</h3>
+            <p>L'architecture de notre agent est conçue pour une interaction intuitive et une récupération d'informations pertinentes à partir de diverses sources. Elle s'inspire du schéma suivant :</p>
+            
+            <div class="native-schema-container">
+                <div class="schema-row">
+                    <div class="schema-box io">
+                        <strong>INPUTS UTILISATEUR</strong><br>
+                        <span style="font-size:0.9em;">Question en langage naturel</span><br>
+                        <span style="font-size:0.9em;">Documents & Sources de données (PDFs, TXT, APIs)</span>
+                    </div>
+                </div>
+                <div class="schema-row">
+                    <div class="schema-arrow">&darr;</div>
+                </div>
+                <div class="schema-row">
+                    <div class="schema-box main-agent">
+                        AGENT LLM (Mixtral)<br>
+                        <span style="font-size:0.8em; font-weight:normal;">Cœur du Système : Compréhension, Raisonnement, Orchestration (LangChain)</span>
+                    </div>
+                </div>
+                <div class="schema-row">
+                    <div class="schema-arrow">&darr;</div>
+                </div>
+                <div class="schema-row">
+                    <div class="tools-group" style="width:100%;">
+                        <strong>BASE DE CONNAISSANCES & OUTILS SPÉCIFIQUES</strong>
+                        <div style="display: flex; justify-content: space-around; margin-top:10px; flex-wrap:wrap;">
+                            <div class="schema-box">RAG / FAISS<br><span style="font-size:0.8em;">(DEU, Plans, Conférences)</span></div>
+                            <div class="schema-box">API Données Financières<br><span style="font-size:0.8em;">(Yahoo Finance)</span></div>
+                            <div class="schema-box">Outils Analyse/Visualisation<br><span style="font-size:0.8em;">(Python, Matplotlib)</span></div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="schema-row">
+                    <div class="schema-arrow">&darr;</div>
+                </div>
+                <div class="schema-row">
+                     <div class="schema-box io">
+                        <strong>OUTPUTS POUR L'UTILISATEUR</strong><br>
+                        <span style="font-size:0.9em;">Réponses synthétisées, Graphiques, Analyses</span>
+                    </div>
+                </div>
+            </div>
+             <p style="text-align:center; font-size:0.9em; color:#555;"><em>Figure 1 : Vue macro de l'architecture de l'Agent.</em></p>
+            <p>L'interaction avec ce prototype V1 s'effectue via un notebook Google Colab.</p>
+        </div>
+    </div>
+    
+    <div class="slide">
+        <div class="slide-content">
+            <h2>Choix Technologiques Clés et Justifications</h2>
+            <p>Nos choix ont été guidés par l'efficacité, l'ouverture (contrainte open-source/freemium), la robustesse et la pertinence pour un prototypage rapide et une future industrialisation :</p>
+            <ul>
+                <li><strong>Approche RAG (Retrieval-Augmented Generation) :</strong> <span class="emphasize">Ancrage indispensable</span> des réponses dans les données factuelles de Renault pour garantir la fiabilité et minimiser les hallucinations.</li>
+                <li><strong>Base Vectorielle (FAISS) & Sentence Transformers :</strong> Couple open-source <span class="emphasize">performant et efficient</span> pour la recherche sémantique, adapté à un déploiement local ou cloud.</li>
+                <li><strong>Modèle de Langage (Mixtral-8x7B-Instruct-v0.1 via Hugging Face Endpoint) :</strong> LLM open-source de <span class="emphasize">haute capacité</span>, offrant un excellent compromis entre performance de compréhension, de raisonnement et accessibilité.</li>
+                <li><strong>Framework d'Orchestration (LangChain) :</strong> <span class="emphasize">Standard de facto</span> pour le développement modulaire et l'intégration des composants d'applications LLM, facilitant la création d'agents et de chaînes complexes.</li>
+                <li><strong>Environnement de Développement (Python & Google Colab) :</strong> Écosystème Python mature et riche pour la Data Science & l'IA ; Colab pour sa <span class="emphasize">flexibilité</span> et sa facilité de partage pour ce prototype.</li>
+            </ul>
+            <p><em>La maîtrise de ces technologies par Renault Digital permet d'envisager des solutions souveraines, personnalisables et évolutives pour Renault SA.</em></p>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="slide-content">
+            <h2>Cas d'Usage Illustratifs : L'Agent en Action</h2>
+            <p>Quelques exemples concrets des capacités du prototype V1, basés sur les questions de l'entretien :</p>
+            
+            <h3>1. Compréhension Stratégique (Synthèse Plan Renaulution - Q1)</h3>
+            <p class="placeholder-image">
+                Capture d'écran : Question Q1 & Réponse Agent (Plan Renaulution)
+            </p>
+            <p><em>Valeur métier : Synthèse rapide des axes d'un plan stratégique pour une compréhension immédiate.</em></p>
+
+            <h3>2. Extraction d'Informations Spécifiques (Membres du CA 2021 - Q2)</h3>
+             <p class="placeholder-image">
+                Capture d'écran : Question Q2 & Réponse Agent (Membres CA 2021)
+            </p>
+            <p><em>Valeur métier : Accès direct à des listes nominatives précises issues de la documentation officielle.</em></p>
+        </div>
+    </div>
+
+     <div class="slide">
+        <div class="slide-content">
+            <h2>Cas d'Usage Illustratifs : L'Agent en Action (suite)</h2>
+            <h3>3. Visualisation de Données (Ventes Annuelles - Q5)</h3>
+            <div class="placeholder-image">
+                Capture d'écran : Q5 & Réponse Agent + Graphique des ventes
+            </div>
+            <p><em>Valeur métier : Transformation de données chiffrées en insights visuels pour le reporting et l'analyse de tendances.</em></p>
+
+            <h3>4. Analyse Comparative (Cours Action vs CAC40 - Q6)</h3>
+             <div class="placeholder-image">
+                Capture d'écran : Q6 & Réponse Agent + Graphique comparatif
+            </div>
+            <p><em>Valeur métier : Outil d'aide à l'analyse de la performance boursière contextuelle.</em></p>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="slide-content">
+            <h2>Bilan du Prototype : Apports & Défis</h2>
+            <div class="col-container">
+                <div class="col-2">
+                    <h3>Principaux Apports Démontrés</h3>
+                    <ul>
+                        <li>Capacité à traiter des sources documentaires hétérogènes (PDFs structurés, transcriptions).</li>
+                        <li>Extraction ciblée et synthèse d'informations factuelles.</li>
+                        <li>Intégration réussie de données externes temps réel (cours de bourse).</li>
+                        <li>Automatisation de tâches de reporting visuel simples.</li>
+                        <li>Validation de la pertinence de l'architecture RAG pour les cas d'usage Renault.</li>
+                    </ul>
+                </div>
+                <div class="col-2">
+                    <h3>Défis Techniques & Apprentissages</h3>
+                    <ul>
+                        <li>**Précision du RAG :** La qualité du "chunking" (découpage) des documents, notamment pour les tableaux ou listes, et la formulation des requêtes par le LLM sont critiques pour l'extraction de faits ultra-spécifiques.</li>
+                        <li>**Fiabilité des Outils :** La robustesse du parsing des entrées/sorties des outils face à la variabilité des générations LLM a nécessité des itérations.</li>
+                        <li>**Ciblage Temporel :** L'utilisation de métadonnées (comme l'année extraite du nom de fichier) dans le RAG s'est avérée cruciale.</li>
+                        <li>**Désambiguïsation Sémantique :** Pour des concepts proches (ex: Conseil d'Administration vs. Comité Exécutif), un guidage précis du LLM via le prompt est indispensable.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="slide">
+        <div class="slide-content">
+            <h2>Limites Actuelles & Axes d'Amélioration du Prototype V1</h2>
+            <ul>
+                <li><strong>Extraction de Listes Exhaustives et Données Complexes :** Bien que fonctionnel (ex: Q2), le "dernier kilomètre" pour garantir une exhaustivité parfaite sur des listes longues ou l'extraction de données très imbriquées depuis des tableaux PDF reste un défi nécessitant un RAG encore plus fin (stratégies de chunking spécifiques, parsing de tableaux).</li>
+                <li><strong>Raisonnement Multi-Étapes Complexe :** Pour des questions nécessitant une planification d'actions très élaborée et une auto-correction poussée (ex: Q3 - comparaison fine de CA sur plusieurs années avec interprétation des changements, Q7 - analyse de corrélation si les données sont éparses), l'agent ReAct standard peut nécessiter un prompting très détaillé ou des outils plus atomiques.</li>
+                <li><strong>Gestion de la Langue :** Des "glissements" occasionnels du LLM vers l'anglais dans les phrases d'enrobage peuvent survenir.</li>
+                <li>**Interface et Interaction :** Le notebook sert de preuve de concept. Une interface métier dédiée et une gestion de contexte conversationnel multi-tours seraient des évolutions naturelles.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="slide-content">
+            <h2>Perspectives d'Évolution : Proposition de Valeur Continue de Renault Digital</h2>
+            <p>Ce prototype n'est qu'une première étape. Renault Digital propose une feuille de route pour faire évoluer cette solution et maximiser sa valeur pour Renault SA :</p>
+            <div class="col-container">
+                <div class="col">
+                    <h3>Phase 1 : Consolidation & Optimisation</h3>
+                    <ul>
+                        <li>Affinement du RAG (chunking sémantique, re-ranking).</li>
+                        <li>Enrichissement des métadonnées pour filtrage avancé.</li>
+                        <li>Prompt engineering avancé pour robustesse.</li>
+                        <li>Tests utilisateurs ciblés (feedback métier).</li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h3>Phase 2 : Vers un MVP Métier</h3>
+                    <ul>
+                        <li>Développement d'une interface utilisateur simple (type Streamlit/Gradio).</li>
+                        <li>Intégration de 1-2 sources de données internes clés (sécurisé).</li>
+                        <li>Extension des capacités analytiques sur un cas d'usage prioritaire.</li>
+                        <li>Mise en place d'indicateurs de performance et de qualité.</li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h3>Phase 3 : Industrialisation & Déploiement</h3>
+                    <ul>
+                        <li>Développement d'agents spécialisés par fonction (Finance, Stratégie, Marketing...).</li>
+                        <li>Intégration aux workflows et outils existants de Renault SA.</li>
+                        <li>Exploration de capacités conversationnelles et proactives.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="placeholder-image" style="min-height:100px;">
+                (Visuel : Feuille de Route Évolutive de la Solution)
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="slide-content">
+            <h2>Conclusion : L'IA Générative au Service de la Stratégie de Renault SA</h2>
+            <p>Ce prototype d'Agent d'Analyse Augmentée illustre concrètement comment Renault Digital peut mobiliser l'IA Générative pour fournir à Renault SA des outils puissants, capables de transformer l'accès à l'information et d'accélérer l'analyse stratégique.</p>
+            <p>Nous sommes convaincus que cette approche RAG, combinée à des outils métiers pertinents et à des LLM performants, constitue un levier majeur d'efficacité et d'aide à la décision pour le Groupe.</p>
+            <p><strong>Renault Digital est prêt à collaborer étroitement avec les équipes de Renault SA pour affiner cette solution et explorer son déploiement sur des cas d'usage à forte valeur ajoutée.</strong></p>
+            <h3 style="text-align:center; margin-top: 40px;">Merci de votre attention.<br>Place aux questions.</h3>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Agent d'Analyse Augmentée Renault - Prototype V1 - [Votre Nom] - [Date]</p>
+    </div>
+
+</body>
+</html>
